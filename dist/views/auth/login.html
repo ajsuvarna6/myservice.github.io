@@ -1,0 +1,93 @@
+<div ng-include="'./views/main-header.html'"></div>
+<div class="container" ng-init="sidebarflag=false">
+  <div class="row">
+    <div class="col-sm-8">
+    </div>
+    <div class="col-sm-4">
+      <div class="well">
+        <ul class="nav nav-tabs nav-justified hidden-xs">
+          <li role="presentation" class="active"><a href="#login">Login</a></li>
+          <li role="presentation"><a href="#register">Register</a></li>
+        </ul>
+        <ul class="nav nav-tabs visible-xs">
+          <li role="presentation" class="active"><a href="#login">Login</a></li>
+          <li role="presentation"><a href="#register">Register</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="login" class="tab-pane fade in active">
+            <form name="fmlogin" ng-submit="loginUser()" novalidate>
+              <div class="form-group has-feedback" ng-class="{ 'has-success' : (!fmlogin.myemail.$untouched && !fmlogin.myemail.$error.required), 'has-error' : ((!fmlogin.myemail.$untouched || fmlogin.$submitted ) && ( !fmlogin.myemail.$valid || fmlogin.myemail.$error.required )) }">
+                <label class="control-label" for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" name="myemail" ng-model="login.email" placeholder="Email" required />
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="( !fmlogin.myemail.$error.email && !fmlogin.myemail.$error.required ) "></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="( fmlogin.myemail.$error.email || fmlogin.myemail.$error.required ) && (!fmlogin.myemail.$untouched || fmlogin.$submitted ) "></span>
+              </div>
+              <div class="form-group has-feedback" ng-class="{ 'has-success' : (!fmlogin.passwd.$untouched && (!fmlogin.passwd.$error.required || fmlogin.passwd.$valid)), 'has-error' : ((!fmlogin.passwd.$untouched || fmlogin.$submitted ) && (fmlogin.passwd.$error.required || !fmlogin.passwd.$valid )) }">
+                <label class="control-label" for="inputPassword">Password</label>
+                <input type="password" class="form-control" ng-minlength="5" ng-model="login.password" name="passwd" id="inputPassword" placeholder="Password" required />
+                <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="(!fmlogin.passwd.$error.required && fmlogin.passwd.$valid)"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="(fmlogin.passwd.$error.required || !fmlogin.passwd.$valid) && (!fmlogin.passwd.$untouched || fmlogin.$submitted )"></span>
+              </div>
+              <div class="form-group">
+                <div class="checkbox">
+                  <label><input type="checkbox"> Remember me</label>
+                </div>
+              </div>
+              <button type="submit" class="btn form-control" ng-class="{ 'btn-primary': fmlogin.$valid , 'btn-danger': fmlogin.$invalid  }">Login</button>
+            </form>
+          </div>
+          <div id="register" class="tab-pane fade">
+            <form>
+              <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" class="form-control" id="fullname" ng-model="user.fullname" placeholder="Full Name">
+              </div>
+              <div class="form-group">
+                <label for="inputEmail2">Email address</label>
+                <input type="email" class="form-control" id="inputEmail2" ng-model="user.email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="password">Create a password</label>
+                <input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="repassword">Confirm your password</label>
+                <input type="password" class="form-control" id="repassword" placeholder="Confirm Password" />
+              </div>
+              <div class="form-group">
+                <label for="dob">Birthday</label>
+                <input type="date" class="form-control" id="dob" ng-model="user.dob" max="2000-01-01" />
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" ng-model="user.gender">
+                  <option value="Male" selected="selected">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile phone</label>
+                <input type="text" class="form-control" id="mobile" ng-model="user.mobile" />
+              </div>
+              <div class="form-group">
+                <div class="checkbox"><label><input type="checkbox" id="agree" /> I agree to the Google Terms of Service and Privacy Policy</label></div>
+              </div>
+              <button type="submit" class="btn btn-primary form-control" ng-click="register()">Create Account</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear()-5;
+    if(dd<10){ dd='0'+dd }
+    if(mm<10){ mm='0'+mm }
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("dob").setAttribute("max", today);
+  </script>
+</div>
