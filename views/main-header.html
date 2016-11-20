@@ -1,0 +1,54 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <button type="button" class="navbar-toggle collapsed side-navbar" ng-show="sidebarflag" data-toggle="collapse" data-target="#sidebar-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand hidden-xs" href="#/">myService</a>
+        <div class="text-center">
+          <a class="brand visible-xs" href="#/">myService</a>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse" id="js-navbar-collapse2">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/">Home</a></li>
+          <li><a ng-href="#/about">About</a></li>
+          <li><a ng-href="#/">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right myaccount-navbar" ng-show="sidebarflag">
+          <li class="dropdown">
+            <a class="dropdown-toggle myaccount" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+								<a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a>
+							</li>
+							<li>
+								<a href="#"><span class="glyphicon glyphicon-refresh"></span> Update Profile</a>
+							</li>
+							<li>
+								<a href="#"><span class="glyphicon glyphicon-briefcase"></span> Billing</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="#/signout"><span class="glyphicon glyphicon-off"></span> Sign Out</a>
+							</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+  </div>
+  <script>
+  $(".myaccount").click(function(e){
+    e.preventDefault();
+  });
+  </script>
+</div>
